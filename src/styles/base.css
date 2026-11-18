@@ -1,0 +1,312 @@
+/* ============================================================================
+ * base.css — Reset, layout global (sidebar + conteúdo), navegação e impressão
+ * ========================================================================== */
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scrollbar-gutter: stable;
+}
+
+body {
+  background-color: var(--bg-color);
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  display: flex;
+  color: var(--text-main);
+  min-height: 100vh;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+/* ---------------------------------------------------------------- Sidebar */
+.sidebar {
+  background: linear-gradient(180deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+  display: flex;
+  position: fixed;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.15);
+  height: 100vh;
+  z-index: 100;
+  width: var(--sidebar-width);
+  color: white;
+  flex-direction: column;
+  transition: transform 0.3s ease;
+}
+
+.sidebar-header {
+  text-align: center;
+  padding: 28px 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.sidebar-header h2 {
+  font-weight: 700;
+  font-size: 26px;
+  letter-spacing: 1px;
+}
+
+.sidebar-header p {
+  text-transform: uppercase;
+  margin-top: 6px;
+  font-size: 12px;
+  opacity: 0.8;
+  letter-spacing: 0.5px;
+}
+
+.nav-menu {
+  overflow-y: auto;
+  flex-grow: 1;
+  padding: 16px 0;
+  list-style: none;
+}
+
+.nav-menu > li {
+  margin-bottom: 4px;
+}
+
+.nav-menu a {
+  gap: 12px;
+  font-weight: 500;
+  padding: 14px 24px;
+  display: flex;
+  border-left: 4px solid transparent;
+  font-size: 15px;
+  transition: background-color 0.25s ease, color 0.25s ease;
+  text-decoration: none;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.nav-menu a:hover,
+.nav-menu a:focus-visible {
+  color: white;
+  background-color: rgba(255, 255, 255, 0.1);
+  outline: none;
+}
+
+.nav-menu a.active {
+  background-color: rgba(255, 255, 255, 0.15);
+  color: white;
+  border-left-color: var(--accent-color);
+}
+
+.nav-menu .icon {
+  text-align: center;
+  font-size: 18px;
+  width: 24px;
+}
+
+.submenu {
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.15);
+  transition: max-height 0.3s ease-in-out;
+  max-height: 0;
+  list-style: none;
+}
+
+.submenu.active {
+  max-height: 500px;
+}
+
+.submenu a {
+  color: rgba(255, 255, 255, 0.7);
+  padding-left: 60px;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.submenu a:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  color: white;
+}
+
+.has-submenu > a {
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.arrow {
+  font-size: 12px;
+  transition: transform 0.3s ease;
+}
+
+.has-submenu.open .arrow {
+  transform: rotate(90deg);
+}
+
+/* Rodapé da sidebar: versão + botão de tema */
+.sidebar-footer {
+  padding: 16px 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.sidebar-footer .metadata {
+  color: rgba(255, 255, 255, 0.7);
+  text-align: left;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.theme-btn {
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: white;
+  border-radius: 20px;
+  padding: 8px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+  white-space: nowrap;
+}
+
+.theme-btn:hover {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+/* ------------------------------------------------- Toggle móvel + backdrop */
+.nav-toggle {
+  display: none;
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 200;
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: var(--radius-xs);
+  width: 44px;
+  height: 44px;
+  font-size: 20px;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 90;
+}
+
+@media (max-width: 920px) {
+  .nav-toggle {
+    display: flex;
+  }
+
+  .sidebar {
+    transform: translateX(-100%);
+  }
+
+  body.nav-open .sidebar {
+    transform: translateX(0);
+  }
+
+  body.nav-open .nav-backdrop {
+    display: block;
+  }
+
+  .main-content {
+    margin-left: 0 !important;
+    padding: 72px 16px 24px !important;
+  }
+}
+
+/* ----------------------------------------------------------- Main content */
+.main-content {
+  padding: 40px;
+  display: flex;
+  flex-grow: 1;
+  margin-left: var(--sidebar-width);
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.header h1 {
+  font-weight: 600;
+  font-size: 28px;
+  color: var(--secondary-color);
+}
+
+html[data-theme="dark"] .header h1 {
+  color: var(--accent-color);
+}
+
+.header a.back-btn,
+.header .date {
+  border-radius: 20px;
+  font-weight: 600;
+  box-shadow: var(--shadow);
+  padding: 8px 16px;
+  font-size: 14px;
+}
+
+.header a.back-btn {
+  transition: transform 0.2s;
+  color: var(--primary-color);
+  text-decoration: none;
+  background: var(--card-bg);
+}
+
+.header a.back-btn:hover {
+  transform: translateY(-2px);
+}
+
+.header .date {
+  color: var(--text-muted);
+  font-weight: 500;
+  background: var(--card-bg);
+}
+
+@media (max-width: 640px) {
+  .header h1 {
+    font-size: 22px;
+  }
+}
+
+/* ---------------------------------------------------------------- Impressão
+ * Técnica "visibility": só o elemento .print-active é impresso.
+ * Usado por imprimirFrame() em src/modules/format.js */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+
+  .print-active,
+  .print-active * {
+    visibility: visible;
+  }
+
+  .print-active {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    padding: 20px;
+    box-shadow: none;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  @page {
+    margin: 1cm;
+  }
+}

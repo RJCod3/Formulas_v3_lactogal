@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lactogal - Camiões Cisterna</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>try{var t=localStorage.getItem('lactogal_theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+    <script type="module" src="/src/main.js"></script>
+    <script type="module" src="/src/pages/camioes.js"></script>
+</head>
+<body>
+
+    <aside class="sidebar" data-nav></aside>
+
+    <main class="main-content">
+        <header class="header">
+            <h1>Capacidades de Camiões Cisterna</h1>
+            <a href="index.html" class="back-btn">← Voltar ao Início</a>
+        </header>
+
+        <!-- Card de Upload -->
+        <div class="card">
+            <h2 class="card-title">
+                Carregar Dados do Excel
+                <label for="csvFileInput" class="upload-btn">📂 Selecionar Ficheiro CSV</label>
+                <input type="file" id="csvFileInput" accept=".csv" style="display: none;">
+            </h2>
+            <div class="status-msg" id="fileStatus">A carregar dados...</div>
+        </div>
+
+        <!-- Cabeçalho Arrastos -->
+        <div class="arrasto-container">
+            <div class="arrasto-card">
+                <div class="icon">🧈</div>
+                <div>
+                    <div class="info-title">Arrasto Natas</div>
+                    <div class="info-value">220</div>
+                </div>
+            </div>
+            <div class="arrasto-card">
+                <div class="icon">🥛</div>
+                <div>
+                    <div class="info-title">Arrasto Leite</div>
+                    <div class="info-value">120</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tabela de Camiões -->
+        <div class="card">
+            <div class="search-bar">
+                <span class="icon">🔍</span>
+                <input type="text" id="searchInput" placeholder="Pesquisar matrícula...">
+            </div>
+            <div class="table-scroll">
+                <table class="data-table center">
+                    <thead>
+                        <tr>
+                            <th>Matrícula</th>
+                            <th>Câmara 1</th>
+                            <th>Câmara 2</th>
+                            <th>Câmara 3</th>
+                            <th>Câmara 4</th>
+                            <th>Câmara 5</th>
+                            <th>Total (L)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="camioesTable"></tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

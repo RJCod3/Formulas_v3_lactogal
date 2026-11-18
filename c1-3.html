@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lactogal - Lote C1-3 Anos</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>try{var t=localStorage.getItem('lactogal_theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+    <script type="module" src="/src/main.js"></script>
+    <script type="module" src="/src/pages/c1-3.js"></script>
+</head>
+<body>
+
+    <aside class="sidebar" data-nav></aside>
+
+    <main class="main-content">
+        <header class="header">
+            <h1>Gordura para o lote de leite (C1-3 Anos)</h1>
+            <a href="index.html" class="back-btn">← Voltar ao Início</a>
+        </header>
+
+        <!-- Card de Upload: dados da tabela carregados a partir de CSV -->
+        <div class="card no-print">
+            <h2 class="card-title">
+                Carregar Dados do Excel
+                <label for="csvFileInput" class="upload-btn">📂 Selecionar Ficheiro CSV</label>
+                <input type="file" id="csvFileInput" accept=".csv" style="display: none;">
+            </h2>
+            <div class="status-msg" id="fileStatus">A carregar dados...</div>
+        </div>
+
+        <div class="card">
+            <h2 class="card-title">Tabela de Padronização</h2>
+            <div class="table-scroll">
+                <table class="excel-table">
+                    <thead>
+                        <tr>
+                            <th colspan="13" class="header-row">Gordura para o lote de leite</th>
+                        </tr>
+                    </thead>
+                    <tbody id="padronizacaoBody">
+                        <!-- Grelha construída a partir de c1-3.csv (ver src/pages/c1-3.js) -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

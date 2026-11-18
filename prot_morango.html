@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lactogal - Proteina Morango</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>try{var t=localStorage.getItem('lactogal_theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+    <script type="module" src="/src/main.js"></script>
+    <script type="module" src="/src/pages/proteina.js"></script>
+</head>
+<body data-receita="prot_morango">
+
+    <aside class="sidebar" data-nav></aside>
+
+    <main class="main-content">
+        <header class="header">
+            <h1>Proteina Morango</h1>
+            <a href="index.html" class="back-btn">← Voltar ao Início</a>
+        </header>
+
+        <!-- Carregar Dados do Excel -->
+        <div class="card">
+            <h2 class="card-title">
+                Carregar Dados do Excel
+                <label for="csvFileInput" class="upload-btn">📂 Selecionar Ficheiro CSV</label>
+                <input type="file" id="csvFileInput" accept=".csv" style="display: none;">
+            </h2>
+            <div class="status-msg" id="fileStatus">A carregar dados...</div>
+        </div>
+
+        <!-- Modo de Cálculo -->
+        <div class="mode-selector">
+            <button type="button" class="mode-btn active" id="btn-leite">Calcular por Leite Recebido</button>
+            <button type="button" class="mode-btn" id="btn-lote">Calcular por Lote Final</button>
+        </div>
+
+        <!-- Input Dinâmico -->
+        <div class="card">
+            <h2 class="card-title" id="form-title">Cálculo por Leite Recebido</h2>
+            <div class="input-row">
+                <div class="input-group">
+                    <label id="input-label"></label>
+                    <input type="number" id="mainInput" min="0" step="0.001">
+                </div>
+            </div>
+        </div>
+
+        <!-- Resultados -->
+        <div class="card">
+            <h2 class="card-title">Quantidades para Pesagens</h2>
+            <div class="table-scroll">
+            <table class="result-table">
+                <thead>
+                    <tr>
+                        <th>Ingrediente</th>
+                        <th>Quantidade</th>
+                    </tr>
+                </thead>
+                <tbody id="resultTable"></tbody>
+            </table>
+            </div>
+            <div class="metadata mt" id="metaInfo"></div>
+        </div>
+    </main>
+</body>
+</html>

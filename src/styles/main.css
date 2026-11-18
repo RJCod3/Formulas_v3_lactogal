@@ -1,0 +1,5 @@
+/* Ponto de entrada dos estilos — importado por cada página via src/main.js */
+@import './tokens.css';
+@import './base.css';
+@import './components.css';
+@import './pages.css';

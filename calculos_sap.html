@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lactogal - Cálculos SAP</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>try{var t=localStorage.getItem('lactogal_theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+    <script type="module" src="/src/main.js"></script>
+    <script type="module" src="/src/pages/calculos_sap.js"></script>
+</head>
+<body>
+    <aside class="sidebar" data-nav></aside>
+
+    <main class="main-content">
+        <header class="header">
+            <h1>Cálculos SAP</h1>
+            <a href="index.html" class="back-btn">← Voltar ao Início</a>
+        </header>
+
+        <div class="calculator-grid">
+            <div class="card">
+                <h2 class="card-title">Dados de Cálculo</h2>
+
+                <div class="form-group">
+                    <label for="quantidade">Quantidade (kg/L)</label>
+                    <input type="number" id="quantidade" step="0.01">
+                </div>
+
+                <div class="form-group">
+                    <label for="gorduraPret">Gordura Pretendida (%)</label>
+                    <input type="number" id="gorduraPret" step="0.01">
+                </div>
+
+                <div class="result-box">
+                    <label>Quantidade SAP</label>
+                    <div class="value" id="qtdSap"></div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2 class="card-title">Parâmetros</h2>
+
+                <div class="form-group">
+                    <label for="gorduraLeite">Gordura do Leite (%)</label>
+                    <input type="number" id="gorduraLeite" step="0.01">
+                </div>
+
+                <div class="form-group">
+                    <label for="gorduraNata">Gordura da Nata (%)</label>
+                    <input type="number" id="gorduraNata" step="0.01">
+                </div>
+
+                <div class="metadata mt">
+                    <p>RJ Software 2026</p>
+                    <p>RJCod3</p>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

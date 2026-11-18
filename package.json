@@ -1,0 +1,15 @@
+{
+  "name": "lactogal-apoio-producao",
+  "private": true,
+  "version": "3.0.0",
+  "description": "Sistema de Apoio à Produção Lactogal — Vite (MPA, ES Modules)",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^7.1.9"
+  }
+}

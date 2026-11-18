@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lactogal - Gestão de Fórmulas</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>try{var t=localStorage.getItem('lactogal_theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+    <script type="module" src="/src/main.js"></script>
+    <script type="module" src="/src/pages/formulacoes.js"></script>
+</head>
+<body>
+
+    <aside class="sidebar" data-nav></aside>
+
+    <main class="main-content">
+        <header class="header">
+            <h1>Gestão de Fórmulas</h1>
+            <a href="index.html" class="back-btn">← Voltar ao Início</a>
+        </header>
+
+        <!-- Card de Upload -->
+        <div class="card">
+            <h2 class="card-title">
+                Carregar Dados do Excel
+                <label for="csvFileInput" class="upload-btn">📂 Selecionar Ficheiro CSV</label>
+                <input type="file" id="csvFileInput" accept=".csv" style="display: none;">
+            </h2>
+            <div class="status-msg" id="fileStatus">Nenhum ficheiro carregado. Por favor, exporte a sua folha para CSV e carregue aqui.</div>
+        </div>
+
+        <!-- Formulário de Seleção -->
+        <div class="card">
+            <h2 class="card-title">Calcular Formulação</h2>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="produtoComboInput">Produto</label>
+                    <div class="combo" id="produtoCombo">
+                        <input type="text" id="produtoComboInput" placeholder="-- Carregue um ficheiro primeiro --" autocomplete="off" disabled>
+                        <div class="combo-list" id="produtoComboList"></div>
+                    </div>
+                </div>
+                <div class="form-group max-200">
+                    <label for="quantidadeInput">Quantidade a Produzir (kg/L)</label>
+                    <input type="number" id="quantidadeInput" min="0" step="0.01" disabled>
+                </div>
+                <button class="btn-calcular" type="button" disabled>Calcular Fórmula</button>
+            </div>
+        </div>
+
+        <!-- Área de Resultados -->
+        <div class="card">
+            <div id="resultadoHeader" style="display: none; margin-bottom: 20px;">
+                <span class="info-badge" id="produtoBadge"></span>
+                <h2 class="card-title resultado-header-title">Lista de Ingredientes</h2>
+            </div>
+            <div id="tabelaResultados">
+                <div class="empty-state">Selecione um produto e introduza a quantidade para ver a formulação.</div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

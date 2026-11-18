@@ -1,0 +1,589 @@
+/* ============================================================================
+ * pages.css — Estilos específicos de cada página
+ * ========================================================================== */
+
+/* ------------------------------------------------------------------ Início */
+.welcome-container {
+  background-color: var(--card-bg);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.welcome-image {
+  width: 100%;
+  min-height: clamp(160px, 30vw, 350px);
+  background:
+    radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.18) 0, transparent 42%),
+    radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.12) 0, transparent 38%),
+    linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 60%, #002a52 100%);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.welcome-image .hero-icon {
+  font-size: clamp(56px, 12vw, 120px);
+  filter: drop-shadow(0 10px 24px rgba(0, 0, 0, 0.35));
+}
+
+.welcome-text {
+  padding: 32px;
+  text-align: center;
+}
+
+.welcome-text h2 {
+  color: var(--secondary-color);
+  font-size: 24px;
+  margin-bottom: 12px;
+}
+
+html[data-theme="dark"] .welcome-text h2 {
+  color: var(--accent-color);
+}
+
+.welcome-text p {
+  color: var(--text-muted);
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.6;
+  font-size: 15px;
+}
+
+/* Acesso rápido aos módulos */
+.quick-links {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 14px;
+  padding: 0 32px 32px;
+}
+
+.quick-card {
+  background: var(--bg-color);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  padding: 18px 12px;
+  text-align: center;
+  text-decoration: none;
+  color: var(--text-main);
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+}
+
+.quick-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow);
+  border-color: var(--accent-color);
+}
+
+.quick-card .icon {
+  font-size: 28px;
+}
+
+.quick-card span {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+/* --------------------------------------------------------------- Cálculos */
+.calculator-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 24px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.metadata.mt {
+  margin-top: 24px;
+}
+
+/* ----------------------------------------------------------------- Acertos */
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.data-table input {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid var(--border-strong);
+  background: var(--input-bg);
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 14px;
+  color: var(--text-main);
+  transition: all 0.2s;
+}
+
+.data-table input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(0, 91, 170, 0.1);
+}
+
+.locked-cell {
+  background-color: var(--locked-bg);
+  border: 1px solid var(--locked-border);
+  border-radius: 4px;
+  padding: 8px 10px;
+  font-weight: 600;
+  color: var(--locked-text);
+  text-align: left;
+  display: block;
+  min-height: 36px;
+}
+
+.row-total td .locked-cell {
+  background-color: #fff176;
+  font-weight: 700;
+  color: var(--secondary-color);
+  font-size: 16px;
+}
+
+html[data-theme="dark"] .row-total td .locked-cell {
+  color: #1a2530;
+}
+
+.taxa-conversao-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--locked-bg);
+  border: 1px solid var(--locked-border);
+  padding: 6px 12px;
+  border-radius: var(--radius-xs);
+}
+
+.taxa-conversao-box label {
+  color: var(--locked-text);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.taxa-conversao-box span {
+  font-weight: 700;
+  color: var(--secondary-color);
+  font-size: 16px;
+  min-width: 40px;
+  text-align: right;
+}
+
+html[data-theme="dark"] .taxa-conversao-box span {
+  color: var(--accent-color);
+}
+
+/* ----------------------------------------------------------- Códigos SAP */
+.grid-container.codigos-grid {
+  grid-template-columns: 1fr 1.2fr;
+  height: auto;
+}
+
+.list-card {
+  background-color: var(--card-bg);
+  border-radius: var(--radius);
+  padding: 20px;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  max-height: 70vh;
+}
+
+.list-items {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding-right: 8px;
+}
+
+.list-items::-webkit-scrollbar {
+  width: 6px;
+}
+
+.list-items::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 3px;
+}
+
+.list-item {
+  padding: 12px 16px;
+  border-radius: var(--radius-sm);
+  margin-bottom: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: 1px solid transparent;
+}
+
+.list-item:hover {
+  background-color: var(--hover-bg);
+  border-color: var(--border-color);
+}
+
+.list-item.active {
+  background-color: var(--surface-alt);
+  border-color: var(--accent-color);
+}
+
+.list-item .item-code {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.list-item .item-name {
+  font-size: 15px;
+  color: var(--text-main);
+  font-weight: 500;
+}
+
+.list-item.active .item-name {
+  color: var(--primary-color);
+  font-weight: 700;
+}
+
+html[data-theme="dark"] .list-item.active .item-name {
+  color: var(--accent-color);
+}
+
+.detail-card {
+  background-color: var(--card-bg);
+  border-radius: var(--radius);
+  padding: 32px;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.detail-header {
+  border-bottom: 2px solid var(--bg-color);
+  padding-bottom: 20px;
+  margin-bottom: 24px;
+}
+
+.detail-header .badge {
+  display: inline-block;
+  background: var(--primary-color);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.detail-header h2 {
+  font-size: 24px;
+  color: var(--secondary-color);
+}
+
+html[data-theme="dark"] .detail-header h2 {
+  color: var(--accent-color);
+}
+
+.detail-title {
+  font-size: 16px;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.code-badge {
+  background: var(--surface-alt);
+  color: var(--primary-color);
+  padding: 6px 10px;
+  border-radius: var(--radius-xs);
+  font-weight: 700;
+  font-size: 14px;
+}
+
+html[data-theme="dark"] .code-badge {
+  color: var(--accent-color);
+}
+
+/* ---------------------------------------------------------------- Camiões */
+.arrasto-container {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.arrasto-card {
+  background: var(--card-bg);
+  padding: 20px 30px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  border-left: 5px solid var(--accent-color);
+  flex: 1;
+  min-width: 220px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.arrasto-card .icon {
+  font-size: 32px;
+}
+
+.arrasto-card .info-title {
+  font-size: 14px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.arrasto-card .info-value {
+  font-size: 24px;
+  color: var(--secondary-color);
+  font-weight: 700;
+}
+
+html[data-theme="dark"] .arrasto-card .info-value {
+  color: var(--accent-color);
+}
+
+.matricula {
+  font-weight: 700;
+  color: var(--primary-color);
+  background: var(--surface-alt);
+  padding: 6px 12px;
+  border-radius: var(--radius-xs);
+  display: inline-block;
+}
+
+html[data-theme="dark"] .matricula {
+  color: var(--accent-color);
+}
+
+.total-cap {
+  font-weight: 700;
+  color: var(--secondary-color);
+  font-size: 16px;
+}
+
+html[data-theme="dark"] .total-cap {
+  color: var(--accent-color);
+}
+
+.data-table.center th {
+  text-align: center;
+}
+
+.data-table.center td {
+  text-align: center;
+}
+
+.data-table.center th:first-child,
+.data-table.center td:first-child {
+  text-align: left;
+}
+
+/* -------------------------------------------------------------- Densidades */
+.info-badges {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.info-badges .badge {
+  background: var(--surface-alt);
+  color: var(--primary-color);
+  padding: 8px 16px;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+html[data-theme="dark"] .info-badges .badge {
+  color: var(--accent-color);
+}
+
+.info-badges .badge strong {
+  color: var(--secondary-color);
+}
+
+html[data-theme="dark"] .info-badges .badge strong {
+  color: var(--accent-color);
+}
+
+.info-badges .badge input {
+  width: 70px;
+  padding: 4px 8px;
+  border: 1px solid var(--primary-color);
+  border-radius: 4px;
+  font-weight: 700;
+  color: var(--primary-color);
+  font-size: 15px;
+  text-align: center;
+  background: var(--input-bg);
+}
+
+html[data-theme="dark"] .info-badges .badge input {
+  color: var(--accent-color);
+}
+
+.info-badges .badge input:focus {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+.empty-row {
+  text-align: center;
+  color: var(--text-muted);
+  padding: 20px;
+  font-style: italic;
+}
+
+/* --------------------------------------------------------------- Fórmulas */
+.form-row {
+  display: flex;
+  gap: 20px;
+  align-items: flex-end;
+  flex-wrap: wrap;
+}
+
+.form-row .form-group {
+  flex: 1;
+  min-width: 250px;
+  margin-bottom: 0;
+}
+
+.form-row .form-group.max-200 {
+  max-width: 200px;
+}
+
+.result-table td.qty {
+  font-weight: 700;
+  color: var(--secondary-color);
+}
+
+html[data-theme="dark"] .result-table td.qty {
+  color: var(--accent-color);
+}
+
+.result-table .compact th {
+  font-size: 12px;
+}
+
+.info-badge {
+  display: inline-block;
+  background: var(--surface-alt);
+  color: var(--primary-color);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+html[data-theme="dark"] .info-badge {
+  color: var(--accent-color);
+}
+
+.resultado-header-title {
+  border-bottom: none !important;
+  margin-bottom: 0 !important;
+}
+
+/* ------------------------------------------------------------- Lote C1-3 */
+.excel-table {
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.excel-table .header-row {
+  text-align: center;
+  font-size: 14px;
+  text-transform: none;
+  letter-spacing: 0.5px;
+  color: var(--secondary-color);
+}
+
+html[data-theme="dark"] .excel-table .header-row {
+  color: var(--accent-color);
+}
+
+.excel-table .row-label {
+  font-weight: 600;
+  color: var(--text-main);
+  padding: 10px 14px;
+  background: var(--hover-bg);
+}
+
+.excel-table .input-cell input {
+  width: 110px;
+  padding: 8px;
+  border: 1px solid var(--primary-color);
+  border-radius: 4px;
+  font-weight: 700;
+  color: var(--primary-color);
+  text-align: center;
+  background: var(--input-bg);
+}
+
+html[data-theme="dark"] .excel-table .input-cell input {
+  color: var(--accent-color);
+}
+
+.excel-table .input-cell input:focus {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+.excel-table .col-label {
+  font-weight: 600;
+  color: var(--text-muted);
+  font-size: 12px;
+  text-transform: uppercase;
+  padding-left: 16px;
+}
+
+/* ------------------------------------------------------------ Responsivo */
+@media (max-width: 920px) {
+  .calculator-grid,
+  .grid-container,
+  .grid-container.codigos-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .list-card {
+    max-height: 45vh;
+  }
+
+  .mode-selector {
+    flex-direction: column;
+  }
+
+  .input-group input {
+    width: 100%;
+  }
+
+  .welcome-text,
+  .quick-links {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .quick-links {
+    padding-bottom: 24px;
+  }
+}

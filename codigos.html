@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lactogal - Códigos SAP e Composição</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>try{var t=localStorage.getItem('lactogal_theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+    <script type="module" src="/src/main.js"></script>
+    <script type="module" src="/src/pages/codigos.js"></script>
+</head>
+<body>
+
+    <aside class="sidebar" data-nav></aside>
+
+    <main class="main-content">
+        <header class="header">
+            <h1>Códigos SAP - Bases</h1>
+            <a href="index.html" class="back-btn">← Voltar ao Início</a>
+        </header>
+
+        <!-- Card de Upload -->
+        <div class="card">
+            <h2 class="card-title">
+                Carregar Dados do Excel
+                <label for="csvFileInput" class="upload-btn">📂 Selecionar Ficheiro CSV</label>
+                <input type="file" id="csvFileInput" accept=".csv" style="display: none;">
+            </h2>
+            <div class="status-msg" id="fileStatus">A carregar dados...</div>
+        </div>
+
+        <div class="grid-container codigos-grid">
+            <!-- Coluna Esquerda: Lista de Produtos -->
+            <div class="list-card">
+                <div class="search-bar">
+                    <span class="icon">🔍</span>
+                    <input type="text" id="searchInput" placeholder="Pesquisar produto...">
+                </div>
+                <div class="list-items" id="productList"></div>
+            </div>
+
+            <!-- Coluna Direita: Detalhes / Bases Consumidas -->
+            <div class="detail-card" id="detailCard">
+                <div class="empty-state">
+                    <div class="icon">👈</div>
+                    <h3>Selecione um produto</h3>
+                    <p>Selecione um produto na lista à esquerda para ver as bases leite/nata que consome.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

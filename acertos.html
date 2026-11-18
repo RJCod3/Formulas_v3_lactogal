@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lactogal - Acertos de Produção</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>try{var t=localStorage.getItem('lactogal_theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+    <script type="module" src="/src/main.js"></script>
+    <script type="module" src="/src/pages/acertos.js"></script>
+</head>
+<body>
+
+    <aside class="sidebar" data-nav></aside>
+
+    <main class="main-content">
+
+        <header class="header no-print">
+            <h1>Acertos de Produção</h1>
+            <a href="index.html" class="back-btn">← Voltar ao Início</a>
+        </header>
+
+        <!-- Card de Upload: dados da tabela carregados a partir de CSV -->
+        <div class="card no-print">
+            <h2 class="card-title">
+                Carregar Dados do Excel
+                <label for="csvFileInput" class="upload-btn">📂 Selecionar Ficheiro CSV</label>
+                <input type="file" id="csvFileInput" accept=".csv" style="display: none;">
+            </h2>
+            <div class="status-msg" id="fileStatus">A carregar dados...</div>
+        </div>
+
+        <div class="grid-container">
+
+            <!-- Tabela 1: Standardização Leite -->
+            <div class="card" id="card-leite">
+                <h2 class="card-title">
+                    Standardização - Leite
+                    <button type="button" class="print-btn no-print" data-imprimir="card-leite">🖨️ Imprimir</button>
+                </h2>
+
+                <div class="lote-input-box">
+                    <label for="std-lote">Quant. Total Lote:</label>
+                    <input type="number" id="std-lote">
+                </div>
+
+                <div class="table-scroll">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Descrição</th>
+                            <th>Quantidade</th>
+                            <th>Gordura (%)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="table-leite">
+                        <tr class="row-total">
+                            <td>Result. Final</td>
+                            <td><span class="locked-cell" id="std-final-qtd"></span></td>
+                            <td><span class="locked-cell" id="std-final-fat"></span></td>
+                        </tr>
+                        <tr>
+                            <td>Existente 1</td>
+                            <td><input type="number" id="std-e1-qtd"></td>
+                            <td><input type="number" id="std-e1-fat" step="0.01"></td>
+                        </tr>
+                        <tr>
+                            <td>Existente</td>
+                            <td><input type="number" id="std-e-qtd"></td>
+                            <td><input type="number" id="std-e-fat" step="0.01"></td>
+                        </tr>
+                        <tr>
+                            <td>Magro/Nata/Gordo</td>
+                            <td><span class="locked-cell" id="std-mng-qtd"></span></td>
+                            <td><input type="number" id="std-mng-fat" step="0.01"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                </div>
+            </div>
+
+            <!-- Tabela 2: Acerto Natas -->
+            <div class="card" id="card-natas">
+                <h2 class="card-title">
+                    Acerto - Natas
+                    <button type="button" class="print-btn no-print" data-imprimir="card-natas">🖨️ Imprimir</button>
+                </h2>
+
+                <div class="lote-input-box">
+                    <label for="acr-lote">Quant. Total Lote:</label>
+                    <input type="number" id="acr-lote">
+                </div>
+
+                <div class="table-scroll">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Descrição</th>
+                            <th>Quantidade</th>
+                            <th>Gordura (%)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="table-natas">
+                        <tr class="row-total">
+                            <td>Result. Final</td>
+                            <td><span class="locked-cell" id="acr-final-qtd"></span></td>
+                            <td><span class="locked-cell" id="acr-final-fat"></span></td>
+                        </tr>
+                        <tr>
+                            <td>Quant 2</td>
+                            <td><input type="number" id="acr-q2-qtd"></td>
+                            <td><input type="number" id="acr-q2-fat" step="0.01"></td>
+                        </tr>
+                        <tr>
+                            <td>Quant 1</td>
+                            <td><input type="number" id="acr-q1-qtd"></td>
+                            <td><input type="number" id="acr-q1-fat" step="0.01"></td>
+                        </tr>
+                        <tr>
+                            <td>Existente</td>
+                            <td><input type="number" id="acr-e-qtd"></td>
+                            <td><input type="number" id="acr-e-fat" step="0.01"></td>
+                        </tr>
+                        <tr>
+                            <td>Magro/Nata/Gordo</td>
+                            <td><span class="locked-cell" id="acr-mng-qtd"></span></td>
+                            <td><input type="number" id="acr-mng-fat" step="0.01"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tabela 3: Ingredientes SAP -->
+        <div class="card no-print">
+            <h2 class="card-title">
+                Lista de Ingredientes (SAP)
+                <div class="lote-input-box" style="margin-bottom: 0; padding: 6px 12px;">
+                    <label for="sap-lote">Quant. Lote:</label>
+                    <input type="number" id="sap-lote">
+
+                    <div class="taxa-conversao-box">
+                        <label>Taxa de Conversão:</label>
+                        <span id="sap-taxa"></span>
+                    </div>
+                </div>
+            </h2>
+            <div class="table-scroll">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Código SAP</th>
+                            <th>Produto</th>
+                            <th>Fator Conv.</th>
+                            <th>Quant. Ingredientes</th>
+                        </tr>
+                    </thead>
+                    <tbody id="table-sap"></tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
